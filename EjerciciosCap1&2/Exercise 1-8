@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define LARGO 100
+#define SALIDA 33
+
+/*  Exercise 1-8. Write a program to count blanks, tabs, and newlines.  */
+void allSpaceCounter(){
+    printf("Escriba \""),putchar(SALIDA),printf("\" para terminar de la escritura\n");
+    int c, line, tab, blank;
+    line = 0, tab = 0, blank = 0;
+    while ((c = getchar()) != SALIDA)
+        if (c == '\n') ++line;
+        else{
+            if (c == '\t') ++tab;
+            else{
+                if (c == ' ' ) ++blank;
+            }
+        }
+
+    printf("Blanks:%d\tTabs:%d\tNew Lines:%d\n", blank, tab,line );
+}
