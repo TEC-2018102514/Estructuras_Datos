@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define LARGO 100
+#define SALIDA 33
+
 /*  Exercise 1-4. Write a program to print the corresponding Celsius to Fahrenheit table.  */
 void temperature_C_to_F() {
     float fahr, celsius;
