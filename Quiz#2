@@ -1,0 +1,81 @@
+/* Definicion de una entidad utilizando 5 atributos y al menos 3 tipos primitivos.
+ * El programa pide la entrada de los 5 datos y los recibe del usuario por medio de la consola.
+ * Por ultimo, el progrma muestra la entidad completada mediante printf */
+ 
+ 
+ 
+#include <stdio.h>
+#include <stdlib.h>
+
+
+// Esta funcion recibe los datos recolectados y los imprime en el formato deseado
+// Recibe char [] (string), int, int, float, char
+void reconocimiento(char Nombre[],int tentaculos,int ojos, float altura, char hostil){
+
+    printf("\n\n\t\t\tConclusion del reconocimiento de la especie: \n\n");
+
+    printf("Nombre de la especie: ");
+    int i =0;
+    while(Nombre[i]!='\0'){                                 //Recorre el array hasta encontrar el final del tecto, es decir \0
+        printf("%c",Nombre[i]);                             // Utiliza i para avanzar dentro del array e imprime lo que 
+        i++;                                                //esta dentro del array en esa posicion
+    }
+    printf("\nCantidad de tentaculos aproximada: %d",tentaculos);
+    printf("\nCantidad de ojos aproximada: %d",ojos);
+    printf("\nAltura aproximada: %3.2f",altura);
+    printf("\nHostil?: %c",hostil);
+}
+
+
+//El main va a funcionar para recolectar todos los datos necesarios para el reconocimiento del extraterrestre, que van a ser
+// Nombre, cantidad de tentaculos, cantidad de ojos, altura y si es hostil o pacifico
+int main() {
+    printf("Te has encontrado una nueva especie alienigena. Por favor procede a identificarla:\n");
+    char c;
+
+    printf("Nombre de la especie: ");
+
+    char especie[50];
+    int i =0;
+    while((c= getchar())!='\n'&& i!= 50){           //Utiliza un ciclo en el que guarda lo escrito por el usuario hasta que presione la tecla enter. 
+        especie[i]= c;                              // Guarda lo escrito usando i como posicion de referencia
+        i++;
+    }
+    especie[i]='\0';
+    i =0;
+
+    printf("Cuantos tenctaculos tiene la especie? ");
+    char tenta[6];
+    while((c= getchar())!='\n'&& i!= 6){
+        tenta[i]= c;
+        i++;
+    }
+    i =0;
+    int tentaculos= atoi(tenta);                    // La funcion atoi utiliza el array guardado y lo convierte en un int
+
+    printf("Cuantos ojos tiene la especie?: ");
+    char oj[6];
+    while((c= getchar())!='\n'&& i!= 6){
+        oj[i]= c;
+        i++;
+    }
+    i =0;           
+    int ojos = atoi(oj);        
+
+    printf("Altura en metros de la especie: ");
+    char alt[6];
+    while((c= getchar())!='\n'&& i!= 6){
+        alt[i]= c;
+        i++;
+    }
+    i =0;
+    float altura = atof(alt);                       // La funcion atof utiliza el array guardado y lo convierte en un float
+
+    printf("Es hostil o pacifico? (H/P) ");
+    char hostil = getchar();
+
+    reconocimiento(especie,tentaculos,ojos,altura,hostil);  //Se envian los datos a la funcion de reconocimiento
+
+
+    return 0;
+}
