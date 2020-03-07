@@ -12,7 +12,7 @@
 // Recibe char [] (string), int, int, float, char
 void reconocimiento(char Nombre[],int tentaculos,int ojos, float altura, char hostil){
 
-    printf("\n\n\t\t\tConclusion del reconocimiento de la especie: \n\n");
+    printf("\n\n\t\tConclusion del reconocimiento de la especie: \n\n");
 
     printf("Nombre de la especie: ");
     int i =0;
@@ -20,10 +20,10 @@ void reconocimiento(char Nombre[],int tentaculos,int ojos, float altura, char ho
         printf("%c",Nombre[i]);                             // Utiliza i para avanzar dentro del array e imprime lo que 
         i++;                                                //esta dentro del array en esa posicion
     }
-    printf("\nCantidad de tentaculos aproximada: %d",tentaculos);
-    printf("\nCantidad de ojos aproximada: %d",ojos);
-    printf("\nAltura aproximada: %3.2f",altura);
-    printf("\nHostil?: %c",hostil);
+    printf("\n\t\tCantidad de tentaculos aproximada: %d",tentaculos);
+    printf("\n\t\tCantidad de ojos aproximada: %d",ojos);
+    printf("\n\t\tAltura aproximada: %3.2f",altura);
+    printf("\n\t\tHostil?: %c\n\n",hostil);
 }
 
 
@@ -63,15 +63,15 @@ int main() {
     int ojos = atoi(oj);        
 
     printf("Altura en metros de la especie: ");
-    char alt[6];
-    while((c= getchar())!='\n'&& i!= 6){
+    char alt[10];
+    while((c= getchar())!='\n'&& i!= 10){
         alt[i]= c;
         i++;
     }
     i =0;
     float altura = atof(alt);                       // La funcion atof utiliza el array guardado y lo convierte en un float
 
-    printf("Es hostil o pacifico? (H/P) ");
+    printf("Es hostil? (S/N) ");
     char hostil = getchar();
 
     reconocimiento(especie,tentaculos,ojos,altura,hostil);  //Se envian los datos a la funcion de reconocimiento
