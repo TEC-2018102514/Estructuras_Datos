@@ -2,17 +2,29 @@
 //Primer cambio a realizar, incluir stdlib.h
 #include <stdlib.h>
 
-struct _agenda {
+
+//Se utiliza el typedef para llamar al struct _agenda
+
+typedef struct _agenda {
 
     char nombre[20];
 
     char telefono[12];
 
+    char residencia[20];
+
+    float cumple;
+
+    int edad;
+
+    char favorito;
+
     struct _agenda *siguiente;
 
-};
+} sAgenda;
 
-struct _agenda *primero, *ultimo;
+
+sAgenda *primero, *ultimo;
 
 void mostrar_menu() {
 
@@ -36,11 +48,11 @@ void mostrar_menu() {
 
 void anadir_elemento() {
 
-    struct _agenda *nuevo;
+    sAgenda *nuevo;
 
 /* reservamos memoria para el nuevo elemento */
 
-    nuevo = (struct _agenda *) malloc (sizeof(struct _agenda));
+    nuevo = (sAgenda *) malloc (sizeof(sAgenda));
 
     if (nuevo==NULL)
 
@@ -59,6 +71,35 @@ void anadir_elemento() {
     fflush(stdout);
 
     gets(nuevo->telefono);
+
+    printf("Residencia: ");
+
+    fflush(stdout);
+
+    gets(nuevo->residencia);
+
+    printf("Cumpleaños (mes.dia): ");
+
+    fflush(stdout);
+
+    char cump[5];
+    gets(cump);
+
+    nuevo->cumple = atof(cump);
+
+    printf("Edad: ");
+
+    fflush(stdout);
+    char ed[3];
+    gets(ed);
+    nuevo->cumple = atoi(ed);
+
+    printf("Favoritos (S/N): ");
+
+    fflush(stdout);
+
+    gets(nuevo->favorito);
+
 
 /* el campo siguiente va a ser NULL por ser el último
 elemento de la lista */
@@ -94,7 +135,7 @@ también vale ultimo==NULL */
 
 void mostrar_lista() {
 
-    struct _agenda *auxiliar; /* para recorrer la lista */
+    sAgenda *auxiliar; /* para recorrer la lista */
 
     int i; i=0;
 
@@ -121,16 +162,15 @@ int main() {
 
     char opcion;
 
-    primero = (struct _agenda *) NULL;
+    primero = (sAgenda *) NULL;
 
-    ultimo = (struct _agenda *) NULL;
+    ultimo = (sAgenda *) NULL;
 
     do {
 
         mostrar_menu();
 
         opcion = getchar();
-        //segundo cambio, getch -> getchar
 
         switch ( opcion ) {
 
@@ -153,3 +193,4 @@ int main() {
     } while (opcion!='4');
 
 }
+
